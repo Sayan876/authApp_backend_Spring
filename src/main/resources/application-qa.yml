@@ -1,0 +1,4 @@
+#Environment for testing
+
+server:
+  port: 8081

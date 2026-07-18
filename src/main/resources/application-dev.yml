@@ -1,0 +1,64 @@
+server:
+  port: 8000
+
+# database connections
+spring:
+  datasource:
+    url: ${JDBC_URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLEID}
+            client-secret: ${GOOGLESECRET}
+            scope:
+              - email
+              - profile
+              - openid
+
+          github:
+            client-id: Ov23lic3PRYHTJt8NEcj
+            client-secret: c74442818f7f7423cd45905bdbd7d1f6ab2a41c0
+#            redirect-uri: http://localhost:8083/login/oauth2/code/{registrationId}
+            scope:
+              - user:email
+              - read:user
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: ${JWT_ISSUER}
+    access-ttl-seconds: ${JWT_ACCESS_TTL_SECONDS:600}
+    refresh-ttl-seconds: ${JWT_REFRESH_TTL_SECONDS:86400}
+    refresh-token-cookie-name: ${JWT_REFRESH_COOKIE_NAME:refreshToken}
+    cookie-secure: ${JWT_COOKIE_SECURE:true}
+    cookie-http-only: ${JWT_COOKIE_HTTP_ONLY:true}
+    cookie-same-site: ${JWT_COOKIE_SAME_SITE:lax}
+    cookie-domain: ${JWT_COOKIE_DOMAIN:localhost}
+
+
+app:
+  cors:
+   front-end-url: https://auth-third-end-front-end.vercel.app
+  auth:
+   frontend:
+     success-redirect: https://auth-third-end-front-end.vercel.app/oauth/success
+     failure-redirect: https://auth-third-end-front-end.vercel.app/oauth/failed

@@ -1,0 +1,4 @@
+#Environment for production stage
+
+server:
+  port: 8089
