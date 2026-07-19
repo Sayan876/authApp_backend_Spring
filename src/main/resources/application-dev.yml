@@ -31,8 +31,8 @@ spring:
               - openid
 
           github:
-            client-id: Ov23lic3PRYHTJt8NEcj
-            client-secret: c74442818f7f7423cd45905bdbd7d1f6ab2a41c0
+            client-id: ${GITHUBID}
+            client-secret: ${GITHUBSECRET}
 #            redirect-uri: http://localhost:8083/login/oauth2/code/{registrationId}
             scope:
               - user:email
@@ -52,7 +52,7 @@ security:
     cookie-secure: ${JWT_COOKIE_SECURE:true}
     cookie-http-only: ${JWT_COOKIE_HTTP_ONLY:true}
     cookie-same-site: ${JWT_COOKIE_SAME_SITE:none}
-    cookie-domain: ${JWT_COOKIE_DOMAIN:authapp-backend-spring.onrender.com}
+    cookie-domain: ${JWT_COOKIE_DOMAIN}
 
 
 app:
