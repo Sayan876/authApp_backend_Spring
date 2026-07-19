@@ -51,7 +51,7 @@ security:
     refresh-token-cookie-name: ${JWT_REFRESH_COOKIE_NAME:refreshToken}
     cookie-secure: ${JWT_COOKIE_SECURE:true}
     cookie-http-only: ${JWT_COOKIE_HTTP_ONLY:true}
-    cookie-same-site: ${JWT_COOKIE_SAME_SITE:lax}
+    cookie-same-site: ${JWT_COOKIE_SAME_SITE:none}
     cookie-domain: ${JWT_COOKIE_DOMAIN:authapp-backend-spring.onrender.com}
 
 
